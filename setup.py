@@ -5,7 +5,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name             = "trudge",
-    version          = "0.0.0.1",
+    version          = "0.0.0.2",
     packages         = ["trudge",],
     install_requires = [],
     license          = "MIT",
