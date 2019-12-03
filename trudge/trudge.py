@@ -17,7 +17,6 @@ class broaden():
     Strategy that involves incrementally broadening
     the subset of the space when enumerating the values.
     """
-
     def __init__(self, *args):
         self.dimensions = args
         self.initialized = True

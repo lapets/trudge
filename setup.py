@@ -15,6 +15,6 @@ setup(
     description      = "Generators that enumerate discrete spaces using various strategies.",
     long_description = long_description,
     long_description_content_type = "text/x-rst",
-    test_suite       = 'nose.collector',
-    tests_require    = ['nose'],
+    test_suite       = "nose.collector",
+    tests_require    = ["nose"],
 )
