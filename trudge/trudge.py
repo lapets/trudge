@@ -6,6 +6,7 @@ strategies.
 """
 
 import doctest
+import summations
 
 class naturals():
     """Base dimension for enumerators of natural numbers."""
@@ -19,7 +20,7 @@ class broaden():
 
     >>> t = broaden(naturals)
     >>> [rs for (rs,_) in zip(t, range(3))] 
-    [[0], [1], [2]]
+    [(0,), (1,), (2,)]
     >>> t.reset()
     >>> t = t * t
     >>> [rs for (rs,_) in zip(t, range(5))]
@@ -46,19 +47,6 @@ class broaden():
 
         return broaden(*self.dimensions, *other.dimensions)
 
-    def _splits(self, n, parts):
-        """
-        Generate every possible way of splitting a non-negative
-        integer into the specified number of non-negative integer
-        terms.
-        """
-        if parts == 1:
-            yield [n]
-        else:
-            for i in range(n+1):
-                for xs in self._splits(n-i, parts-1):
-                    yield tuple(xs+[i])
-
     def _stages(self):
         """
         Generate every possible way of splitting every possible
@@ -66,7 +54,7 @@ class broaden():
         """
         n = 0
         while True:
-            for split in self._splits(n, len(self.dimensions)):
+            for split in summations.sum_len(n, len(self.dimensions)):
                 yield split
             n += 1
 
