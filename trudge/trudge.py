@@ -19,7 +19,7 @@ class broaden():
     the subset of the space when enumerating the values.
 
     >>> t = broaden(naturals)
-    >>> [rs for (rs,_) in zip(t, range(3))] 
+    >>> [rs for (rs,_) in zip(t, range(3))]
     [(0,), (1,), (2,)]
     >>> t.reset()
     >>> t = t * t
