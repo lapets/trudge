@@ -17,6 +17,7 @@ class broaden():
     Strategy that involves incrementally broadening
     the subset of the space when enumerating the values.
     """
+
     def __init__(self, *args):
         self.dimensions = args
         self.initialized = True
@@ -29,18 +30,18 @@ class broaden():
         of the two spaces. Only strategies that have not
         already been queried for values can be combined.
         """
-        if type(other) != type(self):
+        if type(other) is not type(self):
             raise TypeError('Different strategies cannot be combined')
         if not self.initialized or not other.initialized:
             raise ValueError('Can only combine initialized (i.e., unused) strategies')
-        
+
         return broaden(*self.dimensions, *other.dimensions)
 
     def _splits(self, n, parts):
         """
         Generate every possible way of splitting a non-negative
         integer into the specified number of non-negative integer
-        terms. 
+        terms.
         """
         if parts == 1:
             yield [n]
@@ -70,5 +71,5 @@ class broaden():
         self.initialized = True
         self.generator = self._stages()
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     doctest.testmod()
