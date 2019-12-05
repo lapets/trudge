@@ -16,6 +16,15 @@ class broaden():
     """
     Strategy that involves incrementally broadening
     the subset of the space when enumerating the values.
+
+    >>> t = broaden(naturals)
+    >>> [rs for (rs,_) in zip(t, range(3))] 
+    [[0], [1], [2]]
+    >>> t.reset()
+    >>> t = t * t
+    >>> [rs for (rs,_) in zip(t, range(5))]
+    [(0, 0), (1, 0), (0, 1), (2, 0), (1, 1)]
+
     """
 
     def __init__(self, *args):
@@ -65,6 +74,10 @@ class broaden():
         """Initialize this strategy and generate first value."""
         self.initialized = False
         return next(self.generator)
+
+    def __iter__(self):
+        while True:
+            yield next(self)
 
     def reset(self):
         """Reset this strategy so it can be combined with others."""
